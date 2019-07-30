@@ -44,8 +44,8 @@ hub:
   extraVolumes: []
   extraVolumeMounts: []
   image:
-    name: jupyterhub/k8s-hub
-    tag: generated-by-chartpress
+    name: pimsubc/k8s-hub
+    tag: '0.9-dcde99a'
   resources:
     requests:
       cpu: 200m
@@ -163,8 +163,8 @@ singleuser:
     preferred: []
   networkTools:
     image:
-      name: jupyterhub/k8s-network-tools
-      tag: generated-by-chartpress
+      name: pimsubc/k8s-network-tools
+      tag: '0.9-b51ffeb'
   cloudMetadata:
     enabled: false
     ip: 169.254.169.254
@@ -204,8 +204,8 @@ singleuser:
       volumeNameTemplate: volume-{username}{servername}
       storageAccessModes: [ReadWriteOnce]
   image:
-    name: jupyterhub/k8s-singleuser-sample
-    tag: generated-by-chartpress
+    name: pimsubc/k8s-singleuser-sample
+    tag: '0.9-b51ffeb'
     pullPolicy: IfNotPresent
   imagePullSecret:
     enabled: false
@@ -263,8 +263,8 @@ prePuller:
   hook:
     enabled: true
     image:
-      name: jupyterhub/k8s-image-awaiter
-      tag: generated-by-chartpress
+      name: pimsubc/k8s-image-awaiter
+      tag: '0.9-b51ffeb'
   continuous:
     enabled: true
   extraImages: {}
@@ -273,6 +273,15 @@ prePuller:
       name: gcr.io/google_containers/pause
       tag: '3.0'
 
+shib:
+  image:
+    name: pimsubc/k8s-shib
+    tag: '0.9-b51ffeb'
+
+httpd-proxy:
+  image:
+    name: pimsubc/k8s-httpd-proxy
+    tag: '0.9-b51ffeb'
 
 ingress:
   enabled: false

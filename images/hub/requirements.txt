@@ -18,3 +18,6 @@ cryptography==2.3.*
 jupyterhub-hmacauthenticator
 # Very useful for profiling running hubs
 py-spy
+# Syzygy Authenticator
+jhub_remote_user_authenticator
+git+https://github.com/callysto/syzygyauthenticator@shib-ubc#syzygyauthenticator

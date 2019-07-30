@@ -1149,6 +1149,15 @@ properties:
                 name: jupyter/all-spark-notebook
                 tag: 2343e33dec46
           ```
+  shib:
+    type: object
+    description: |
+      Shibboleth config options
+
+  httpd-proxy:
+    type: object
+    description: |
+      Apache proxy config
 
   custom:
     type: object
