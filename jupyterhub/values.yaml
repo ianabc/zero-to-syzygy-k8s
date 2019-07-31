@@ -45,7 +45,7 @@ hub:
   extraVolumeMounts: []
   image:
     name: pimsubc/k8s-hub
-    tag: '0.9-dcde99a'
+    tag: '0.9-85f3f87'
   resources:
     requests:
       cpu: 200m
@@ -164,7 +164,7 @@ singleuser:
   networkTools:
     image:
       name: pimsubc/k8s-network-tools
-      tag: '0.9-b51ffeb'
+      tag: '0.9-85f3f87'
   cloudMetadata:
     enabled: false
     ip: 169.254.169.254
@@ -205,7 +205,7 @@ singleuser:
       storageAccessModes: [ReadWriteOnce]
   image:
     name: pimsubc/k8s-singleuser-sample
-    tag: '0.9-b51ffeb'
+    tag: '0.9-85f3f87'
     pullPolicy: IfNotPresent
   imagePullSecret:
     enabled: false
@@ -264,7 +264,7 @@ prePuller:
     enabled: true
     image:
       name: pimsubc/k8s-image-awaiter
-      tag: '0.9-b51ffeb'
+      tag: '0.9-85f3f87'
   continuous:
     enabled: true
   extraImages: {}
@@ -276,12 +276,12 @@ prePuller:
 shib:
   image:
     name: pimsubc/k8s-shib
-    tag: '0.9-b51ffeb'
+    tag: '0.9-85f3f87'
 
 httpd-proxy:
   image:
     name: pimsubc/k8s-httpd-proxy
-    tag: '0.9-b51ffeb'
+    tag: '0.9-85f3f87'
 
 ingress:
   enabled: false
