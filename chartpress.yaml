@@ -21,4 +21,4 @@ charts:
       shib:
         valuesPath: shib.image
       httpd-proxy:
-        valuesPath: httpd-proxy.image
+        valuesPath: httpdProxy.image

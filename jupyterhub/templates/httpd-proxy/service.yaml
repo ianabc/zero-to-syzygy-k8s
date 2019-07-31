@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: httpd-proxy
   labels:
-    {{- include "jupyterhub.labels" $_ | nindent 4 }}
+    {{- include "jupyterhub.labels" . | nindent 4 }}
 spec:
   ports:
   - name: "80"
@@ -13,4 +13,4 @@ spec:
     port: 443
     targetPort: 443
   selector:
-    component: httpd-proxy
+    {{- include "jupyterhub.matchLabels" . | nindent 4 }}

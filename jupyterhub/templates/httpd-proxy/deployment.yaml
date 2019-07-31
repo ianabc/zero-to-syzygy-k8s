@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: httpd-proxy
   labels:
-    {{- include "jupyterhub-labels" . | nindent 4 }}
+    {{- include "jupyterhub.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{ - include "jupyterhub.matchLabels" . | nindent 6 }}
+      {{- include "jupyterhub.matchLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: httpd-proxy
+        {{- include "jupyterhub.matchLabels" . | nindent 8 }}
     spec:
       containers:
         - name: httpd-proxy
-          image: {{ .Values.httpd-proxy.image.name }}:{{ .Values.httpd-proxy.image.tag }}
+          image: {{ .Values.httpdProxy.image.name }}:{{ .Values.httpdProxy.image.tag }}
           ports:
             - containerPort: 80
             - containerPort: 443

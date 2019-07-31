@@ -278,7 +278,7 @@ shib:
     name: pimsubc/k8s-shib
     tag: '0.9-85f3f87'
 
-httpd-proxy:
+httpdProxy:
   image:
     name: pimsubc/k8s-httpd-proxy
     tag: '0.9-85f3f87'
