@@ -17,3 +17,18 @@ spec:
     - protocol: TCP
       port: 8001
       targetPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy
+  labels:
+    {{- $_ := merge (dict "componentSuffix" "-api") . }}
+    {{- include "jupyterhub.labels" $_ | nindent 4 }}
+spec:
+  selector:
+    {{- include "jupyterhub.matchLabels" . | nindent 4 }}
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
