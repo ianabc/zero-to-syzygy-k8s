@@ -1,72 +1,73 @@
-<!-- The entity describing the SAMLtest IdP, named by the entityID below --> 
-
-<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="SAMLtestIdP" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui" entityID="https://samltest.id/saml/idp">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     (c) The University of British Columbia
+     STG Identity Provider
+-->
+<EntityDescriptor  xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui" entityID="https://authentication.stg.id.ubc.ca">
 
     <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol urn:oasis:names:tc:SAML:1.1:protocol urn:mace:shibboleth:1.0">
 
         <Extensions>
-<!-- An enumeration of the domains this IdP is able to assert scoped attributes, which are
-typically those with a @ delimiter, like mail.  Most IdP's serve only a single domain.  It's crucial
-for the SP to check received attribute values match permitted domains to prevent a recognized IdP from 
-sending attribute values for which a different recognized IdP is authoritative. -->
-            <shibmd:Scope regexp="false">samltest.id</shibmd:Scope>
+            <shibmd:Scope regexp="false">ubc.ca</shibmd:Scope>
+ 
 
-<!-- Display information about this IdP that can be used by SP's and discovery
-services to identify the IdP meaningfully for end users --> 
             <mdui:UIInfo>
-                <mdui:DisplayName xml:lang="en">SAMLtest IdP</mdui:DisplayName>
-                <mdui:Description xml:lang="en">A free and basic IdP for testing SAML deployments</mdui:Description>
-                <mdui:Logo height="90" width="225">https://samltest.id/saml/logo.png</mdui:Logo>
+                <mdui:DisplayName xml:lang="en">University of British Columbia</mdui:DisplayName>
+                <mdui:Description xml:lang="en">STG Identity Provider</mdui:Description>
+                <mdui:Logo height="80" width="80">http://brand2.sites.olt.ubc.ca/files/2012/08/UBCLogo_Black1.png</mdui:Logo>
             </mdui:UIInfo>
+
         </Extensions>
 
-        <KeyDescriptor use="signing">
+        <!-- <KeyDescriptor use="signing">
             <ds:KeyInfo>
                     <ds:X509Data>
                         <ds:X509Certificate>
-MIIDETCCAfmgAwIBAgIUZRpDhkNKl5eWtJqk0Bu1BgTTargwDQYJKoZIhvcNAQEL
-BQAwFjEUMBIGA1UEAwwLc2FtbHRlc3QuaWQwHhcNMTgwODI0MjExNDEwWhcNMzgw
-ODI0MjExNDEwWjAWMRQwEgYDVQQDDAtzYW1sdGVzdC5pZDCCASIwDQYJKoZIhvcN
-AQEBBQADggEPADCCAQoCggEBAJrh9/PcDsiv3UeL8Iv9rf4WfLPxuOm9W6aCntEA
-8l6c1LQ1Zyrz+Xa/40ZgP29ENf3oKKbPCzDcc6zooHMji2fBmgXp6Li3fQUzu7yd
-+nIC2teejijVtrNLjn1WUTwmqjLtuzrKC/ePoZyIRjpoUxyEMJopAd4dJmAcCq/K
-k2eYX9GYRlqvIjLFoGNgy2R4dWwAKwljyh6pdnPUgyO/WjRDrqUBRFrLQJorR2kD
-c4seZUbmpZZfp4MjmWMDgyGM1ZnR0XvNLtYeWAyt0KkSvFoOMjZUeVK/4xR74F8e
-8ToPqLmZEg9ZUx+4z2KjVK00LpdRkH9Uxhh03RQ0FabHW6UCAwEAAaNXMFUwHQYD
-VR0OBBYEFJDbe6uSmYQScxpVJhmt7PsCG4IeMDQGA1UdEQQtMCuCC3NhbWx0ZXN0
-LmlkhhxodHRwczovL3NhbWx0ZXN0LmlkL3NhbWwvaWRwMA0GCSqGSIb3DQEBCwUA
-A4IBAQBNcF3zkw/g51q26uxgyuy4gQwnSr01Mhvix3Dj/Gak4tc4XwvxUdLQq+jC
-cxr2Pie96klWhY/v/JiHDU2FJo9/VWxmc/YOk83whvNd7mWaNMUsX3xGv6AlZtCO
-L3JhCpHjiN+kBcMgS5jrtGgV1Lz3/1zpGxykdvS0B4sPnFOcaCwHe2B9SOCWbDAN
-JXpTjz1DmJO4ImyWPJpN1xsYKtm67Pefxmn0ax0uE2uuzq25h0xbTkqIQgJzyoE/
-DPkBFK1vDkMfAW11dQ0BXatEnW7Gtkc0lh2/PIbHWj4AzxYMyBf5Gy6HSVOftwjC
-voQR2qr2xJBixsg+MIORKtmKHLfU
+MIIDTDCCAjSgAwIBAgIUFEdQjgKLffrtt3KzzLlgFy2EHH8wDQYJKoZIhvcNAQEL
+BQAwJzElMCMGA1UEAwwcYXV0aGVudGljYXRpb24uc3RnLmlkLnViYy5jYTAeFw0x
+NzAzMDExOTU0MzZaFw0zNzAzMDExOTU0MzZaMCcxJTAjBgNVBAMMHGF1dGhlbnRp
+Y2F0aW9uLnN0Zy5pZC51YmMuY2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQCbjZ9oUcW+7cF+e9ksb5mMq/NeI7h9hjK9oq7TFeshXynMtVl50VooxDk3
+w91g08nGOc9P1pL2YC2xvl8WcAhEfX8DmUxVtvDCgXOv+xNCvvsEwDkgn39DOouF
+067Cofk3SPXwtu3P0yS1SRVx+O7shNiRlVTUfSOt03xGVJOLz2OAa96uQcHQ+R9F
+7Cwsv3QVUcPOxvDaHMpi221/mJ3lHocKeNeqR8U1WAUHRCwp+6VdfYVqXUKXWjpf
+fLWWdRxcoNbOam4pqtTnr8DJRYrFi/FGYh9OOhxXQZBr0XUgzF/2cqIuBM+IE3xq
+s1j3PrKWMb6D4Xq++XFeMiTPp0jrAgMBAAGjcDBuMB0GA1UdDgQWBBTCi8RELtfT
+ir1l7NyGP5TMVBeKkDBNBgNVHREERjBEghxhdXRoZW50aWNhdGlvbi5zdGcuaWQu
+dWJjLmNhhiRodHRwczovL2F1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwDQYJ
+KoZIhvcNAQELBQADggEBACIa4mvArPAsLs83pKHFe3Qa5wG5hRFuygjAZdFN7XGJ
+Idd4g6evZQioiwyClem1jF3elYv9q36BIVPMXVOeLmT5DUNKXvp5P1YsCHUAZD/Z
+oHFTMRrN+gBudiCb7z9EBNoH7nkTyhcQfM0jrWEuElOMcVcwAspqWx7REscWqiik
+tXcJLz9lib41PDPz7To98eB5TWIUh+S8offjSwRssCKjWw9xf6WXtRo//KI1ONPF
+so7CUWcfAIvdEX2/Fq5LDdveLF8nvS3BLbn97CsP4xFk4+OaTtgwnx8BB4/SuJsn
+hGjYK6oMrCcQulmxJIaiSkGG7scAt9EF6m0bkDAByho=
                         </ds:X509Certificate>
                     </ds:X509Data>
             </ds:KeyInfo>
 
-        </KeyDescriptor>
+        </KeyDescriptor> -->
         <KeyDescriptor use="signing">
             <ds:KeyInfo>
                     <ds:X509Data>
                         <ds:X509Certificate>
-MIIDEjCCAfqgAwIBAgIVAMECQ1tjghafm5OxWDh9hwZfxthWMA0GCSqGSIb3DQEB
-CwUAMBYxFDASBgNVBAMMC3NhbWx0ZXN0LmlkMB4XDTE4MDgyNDIxMTQwOVoXDTM4
-MDgyNDIxMTQwOVowFjEUMBIGA1UEAwwLc2FtbHRlc3QuaWQwggEiMA0GCSqGSIb3
-DQEBAQUAA4IBDwAwggEKAoIBAQC0Z4QX1NFKs71ufbQwoQoW7qkNAJRIANGA4iM0
-ThYghul3pC+FwrGv37aTxWXfA1UG9njKbbDreiDAZKngCgyjxj0uJ4lArgkr4AOE
-jj5zXA81uGHARfUBctvQcsZpBIxDOvUUImAl+3NqLgMGF2fktxMG7kX3GEVNc1kl
-bN3dfYsaw5dUrw25DheL9np7G/+28GwHPvLb4aptOiONbCaVvh9UMHEA9F7c0zfF
-/cL5fOpdVa54wTI0u12CsFKt78h6lEGG5jUs/qX9clZncJM7EFkN3imPPy+0HC8n
-spXiH/MZW8o2cqWRkrw3MzBZW3Ojk5nQj40V6NUbjb7kfejzAgMBAAGjVzBVMB0G
-A1UdDgQWBBQT6Y9J3Tw/hOGc8PNV7JEE4k2ZNTA0BgNVHREELTArggtzYW1sdGVz
-dC5pZIYcaHR0cHM6Ly9zYW1sdGVzdC5pZC9zYW1sL2lkcDANBgkqhkiG9w0BAQsF
-AAOCAQEASk3guKfTkVhEaIVvxEPNR2w3vWt3fwmwJCccW98XXLWgNbu3YaMb2RSn
-7Th4p3h+mfyk2don6au7Uyzc1Jd39RNv80TG5iQoxfCgphy1FYmmdaSfO8wvDtHT
-TNiLArAxOYtzfYbzb5QrNNH/gQEN8RJaEf/g/1GTw9x/103dSMK0RXtl+fRs2nbl
-D1JJKSQ3AdhxK/weP3aUPtLxVVJ9wMOQOfcy02l+hHMb6uAjsPOpOVKqi3M8XmcU
-ZOpx4swtgGdeoSpeRyrtMvRwdcciNBp9UZome44qZAYH1iqrpmmjsfI9pJItsgWu
-3kXPjhSfj1AJGR1l9JGvJrHki1iHTA==
+MIIDTTCCAjWgAwIBAgIVAJccYyIV6wly8XyddumpgnHMJ2JLMA0GCSqGSIb3DQEB
+CwUAMCcxJTAjBgNVBAMMHGF1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwHhcN
+MTcwMzAxMTk1NDM0WhcNMzcwMzAxMTk1NDM0WjAnMSUwIwYDVQQDDBxhdXRoZW50
+aWNhdGlvbi5zdGcuaWQudWJjLmNhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEArRl/RJQ7BBv4AGFEk6hbnPRaFYOYTLTYT05iiatffdwGkWGvhf9ffPBl
+8l1a4l3fLk69M2zvDcjJngBi8voeqjqIU9n9SmbAoG+lX6JUNKl435Bx6+WIT0Q1
+pblemqp5xXHXjmsWKHrdzvNXXSiPgZ0En9I0lsaFcGLACIUaFEhn/FYJZrqFAdIL
+9S8wDmWsWIbt+mqiP4YWMMY60DlmSC8VgKwhyT3+FIacxP/NpL24PiDpDJer7aTD
+yqzBonVFiVRVPqLLHpd883CoNC8ncvSVcF4mR6M2duPXJLOK4bU+K8JzLbsYxUgE
+MMkmRBdi/n8PpSUvd870wXW4kfHfxQIDAQABo3AwbjAdBgNVHQ4EFgQUN5GZVXNQ
+E/3EvfJT56pr/GEzQI4wTQYDVR0RBEYwRIIcYXV0aGVudGljYXRpb24uc3RnLmlk
+LnViYy5jYYYkaHR0cHM6Ly9hdXRoZW50aWNhdGlvbi5zdGcuaWQudWJjLmNhMA0G
+CSqGSIb3DQEBCwUAA4IBAQA2e2WkSxnVFXvxAj0njn8H/vl+YhLdN/xdLZ/Np5t5
+/duEVUgHaW0bILsKxdw2+5VGgHBmVGButmodPhA5OHg6gCDNJ4gqjrqfNfon3/yS
+r0jvm1EZ44+IFTrrRt9aTppKnmEVkYs6fP46cygo3rSWuSHeNbZPZBEJ81l52snJ
+QIHGPdDtE387EsjDMAI2YjbCQfNkrmB6yedLURu/m34MzAgtCPYx9uWMcJ5DleaR
+XvSl3XmcDg63y+jqYhVCHuYV5eqIXj1OF3WPk438xUuh6HuHKIwQqHBz7udxbH3Z
+bb6jXGDJjiDHt1LRJ8xbVisFIcDlIwsGQQi0HeEJfx4P
                         </ds:X509Certificate>
                     </ds:X509Data>
             </ds:KeyInfo>
@@ -76,47 +77,144 @@ ZOpx4swtgGdeoSpeRyrtMvRwdcciNBp9UZome44qZAYH1iqrpmmjsfI9pJItsgWu
             <ds:KeyInfo>
                     <ds:X509Data>
                         <ds:X509Certificate>
-MIIDEjCCAfqgAwIBAgIVAPVbodo8Su7/BaHXUHykx0Pi5CFaMA0GCSqGSIb3DQEB
-CwUAMBYxFDASBgNVBAMMC3NhbWx0ZXN0LmlkMB4XDTE4MDgyNDIxMTQwOVoXDTM4
-MDgyNDIxMTQwOVowFjEUMBIGA1UEAwwLc2FtbHRlc3QuaWQwggEiMA0GCSqGSIb3
-DQEBAQUAA4IBDwAwggEKAoIBAQCQb+1a7uDdTTBBFfwOUun3IQ9nEuKM98SmJDWa
-MwM877elswKUTIBVh5gB2RIXAPZt7J/KGqypmgw9UNXFnoslpeZbA9fcAqqu28Z4
-sSb2YSajV1ZgEYPUKvXwQEmLWN6aDhkn8HnEZNrmeXihTFdyr7wjsLj0JpQ+VUlc
-4/J+hNuU7rGYZ1rKY8AA34qDVd4DiJ+DXW2PESfOu8lJSOteEaNtbmnvH8KlwkDs
-1NvPTsI0W/m4SK0UdXo6LLaV8saIpJfnkVC/FwpBolBrRC/Em64UlBsRZm2T89ca
-uzDee2yPUvbBd5kLErw+sC7i4xXa2rGmsQLYcBPhsRwnmBmlAgMBAAGjVzBVMB0G
-A1UdDgQWBBRZ3exEu6rCwRe5C7f5QrPcAKRPUjA0BgNVHREELTArggtzYW1sdGVz
-dC5pZIYcaHR0cHM6Ly9zYW1sdGVzdC5pZC9zYW1sL2lkcDANBgkqhkiG9w0BAQsF
-AAOCAQEABZDFRNtcbvIRmblnZItoWCFhVUlq81ceSQddLYs8DqK340//hWNAbYdj
-WcP85HhIZnrw6NGCO4bUipxZXhiqTA/A9d1BUll0vYB8qckYDEdPDduYCOYemKkD
-dmnHMQWs9Y6zWiYuNKEJ9mf3+1N8knN/PK0TYVjVjXAf2CnOETDbLtlj6Nqb8La3
-sQkYmU+aUdopbjd5JFFwbZRaj6KiHXHtnIRgu8sUXNPrgipUgZUOVhP0C0N5OfE4
-JW8ZBrKgQC/6vJ2rSa9TlzI6JAa5Ww7gMXMP9M+cJUNQklcq+SBnTK8G+uBHgPKR
-zBDsMIEzRtQZm4GIoHJae4zmnCekkQ==
+MIIDTDCCAjSgAwIBAgIUelptJqDnS5mQ5KlE1U7kJJYVqOYwDQYJKoZIhvcNAQEL
+BQAwJzElMCMGA1UEAwwcYXV0aGVudGljYXRpb24uc3RnLmlkLnViYy5jYTAeFw0x
+NzAzMDExOTU0MzVaFw0zNzAzMDExOTU0MzVaMCcxJTAjBgNVBAMMHGF1dGhlbnRp
+Y2F0aW9uLnN0Zy5pZC51YmMuY2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQDA1b3xW7AlagzA67GOq2pDFfY4OY8+Z9Rp9fM43sdpHNSxLnOZf0cTOfpX
+xevAlmjtSY1y34/F59P6hULM5L28TOy1GJjfNoliGl4pFnVqjuRxtJYb3D2nu1dz
+URKhBkV3tqK0iFN/c3bXwYYdQOcavHdtqCOSAjub8oGrwjxS95tGda102aTotJ9K
+/4Q2sZbcXmrgvxgvnjCubsRqDX7jTBXPmfaNnnH1eBaVkjkk3OBCw590DykSmpqh
+qcOT4N+R2Dkt5GWxREP51wvMbks5cgipvx0q9ICNNecfVPTA/fCicZs91mndcy8T
+O7RWqkqW1V44rPhDddFxKlRv312bAgMBAAGjcDBuMB0GA1UdDgQWBBQMewgM36IE
+QYzyZ1cgx2o6iYpacDBNBgNVHREERjBEghxhdXRoZW50aWNhdGlvbi5zdGcuaWQu
+dWJjLmNhhiRodHRwczovL2F1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwDQYJ
+KoZIhvcNAQELBQADggEBAByoR/Yk1hIlo/VsXdQqR9ngYLPH47oA3rIASzA1d4ek
+juzsv7L7VHcm7rtYPMFecVwLkDGAsC8nHOPbf4L6rdvvkc+OT88dMooudgdAbvEo
+G8d4sSpJI8ZBUWJkFqMucX8EU6UT328REEo9Srb6Sxb3btsNZ2g5zi/f7zqexYO5
+RzcOSDI8CujAyY+yoTvZhWHxnDgOmUFZe2jLh0exj4NsFx5ygT1n2uRRg2H2oJ5N
+GjCr3rY8MYltz24oKf8dbJGu3eVZwehelxb2+vHaqhaks4loBgg2Wup2nnKz0bEw
+MP0BO0FDvjHQlrIMlHo4KwFXXXpUnrR1VVVHXe3a1Y8=
                         </ds:X509Certificate>
                     </ds:X509Data>
             </ds:KeyInfo>
 
         </KeyDescriptor>
 
-<!-- An endpoint for artifact resolution.  Please see Wikipedia for more details about SAML
-     artifacts and when you may find them useful. -->
+        
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/Redirect/SLO"/>
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/POST/SLO"/>
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/POST-SimpleSign/SLO"/>
+        
 
-        <ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://samltest.id/idp/profile/SAML2/SOAP/ArtifactResolution" index="1" />
-
-<!-- A set of endpoints where the IdP can receive logout messages. These must match the public
-facing addresses if this IdP is hosted behind a reverse proxy.  --> 
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://samltest.id/idp/profile/SAML2/Redirect/SLO"/>
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://samltest.id/idp/profile/SAML2/POST/SLO"/>
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://samltest.id/idp/profile/SAML2/POST-SimpleSign/SLO"/>
-
-<!-- A set of endpoints the SP can send AuthnRequests to in order to trigger user authentication. -->
-        <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest" Location="https://samltest.id/idp/profile/Shibboleth/SSO"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://samltest.id/idp/profile/SAML2/POST/SSO"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://samltest.id/idp/profile/SAML2/POST-SimpleSign/SSO"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://samltest.id/idp/profile/SAML2/Redirect/SSO"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://samltest.id/idp/profile/SAML2/SOAP/ECP"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/POST/SSO"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/POST-SimpleSign/SSO"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://authentication.stg.id.ubc.ca/idp/profile/SAML2/Redirect/SSO"/>
 
     </IDPSSODescriptor>
 
+<AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+
+        <Extensions>
+            <shibmd:Scope regexp="false">ubc.ca</shibmd:Scope>
+        </Extensions>
+
+        <!-- <KeyDescriptor use="signing">
+            <ds:KeyInfo>
+                    <ds:X509Data>
+                        <ds:X509Certificate>
+MIIDTDCCAjSgAwIBAgIUFEdQjgKLffrtt3KzzLlgFy2EHH8wDQYJKoZIhvcNAQEL
+BQAwJzElMCMGA1UEAwwcYXV0aGVudGljYXRpb24uc3RnLmlkLnViYy5jYTAeFw0x
+NzAzMDExOTU0MzZaFw0zNzAzMDExOTU0MzZaMCcxJTAjBgNVBAMMHGF1dGhlbnRp
+Y2F0aW9uLnN0Zy5pZC51YmMuY2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQCbjZ9oUcW+7cF+e9ksb5mMq/NeI7h9hjK9oq7TFeshXynMtVl50VooxDk3
+w91g08nGOc9P1pL2YC2xvl8WcAhEfX8DmUxVtvDCgXOv+xNCvvsEwDkgn39DOouF
+067Cofk3SPXwtu3P0yS1SRVx+O7shNiRlVTUfSOt03xGVJOLz2OAa96uQcHQ+R9F
+7Cwsv3QVUcPOxvDaHMpi221/mJ3lHocKeNeqR8U1WAUHRCwp+6VdfYVqXUKXWjpf
+fLWWdRxcoNbOam4pqtTnr8DJRYrFi/FGYh9OOhxXQZBr0XUgzF/2cqIuBM+IE3xq
+s1j3PrKWMb6D4Xq++XFeMiTPp0jrAgMBAAGjcDBuMB0GA1UdDgQWBBTCi8RELtfT
+ir1l7NyGP5TMVBeKkDBNBgNVHREERjBEghxhdXRoZW50aWNhdGlvbi5zdGcuaWQu
+dWJjLmNhhiRodHRwczovL2F1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwDQYJ
+KoZIhvcNAQELBQADggEBACIa4mvArPAsLs83pKHFe3Qa5wG5hRFuygjAZdFN7XGJ
+Idd4g6evZQioiwyClem1jF3elYv9q36BIVPMXVOeLmT5DUNKXvp5P1YsCHUAZD/Z
+oHFTMRrN+gBudiCb7z9EBNoH7nkTyhcQfM0jrWEuElOMcVcwAspqWx7REscWqiik
+tXcJLz9lib41PDPz7To98eB5TWIUh+S8offjSwRssCKjWw9xf6WXtRo//KI1ONPF
+so7CUWcfAIvdEX2/Fq5LDdveLF8nvS3BLbn97CsP4xFk4+OaTtgwnx8BB4/SuJsn
+hGjYK6oMrCcQulmxJIaiSkGG7scAt9EF6m0bkDAByho=
+                        </ds:X509Certificate>
+                    </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor> -->
+        <KeyDescriptor use="signing">
+            <ds:KeyInfo>
+                    <ds:X509Data>
+                        <ds:X509Certificate>
+MIIDTTCCAjWgAwIBAgIVAJccYyIV6wly8XyddumpgnHMJ2JLMA0GCSqGSIb3DQEB
+CwUAMCcxJTAjBgNVBAMMHGF1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwHhcN
+MTcwMzAxMTk1NDM0WhcNMzcwMzAxMTk1NDM0WjAnMSUwIwYDVQQDDBxhdXRoZW50
+aWNhdGlvbi5zdGcuaWQudWJjLmNhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEArRl/RJQ7BBv4AGFEk6hbnPRaFYOYTLTYT05iiatffdwGkWGvhf9ffPBl
+8l1a4l3fLk69M2zvDcjJngBi8voeqjqIU9n9SmbAoG+lX6JUNKl435Bx6+WIT0Q1
+pblemqp5xXHXjmsWKHrdzvNXXSiPgZ0En9I0lsaFcGLACIUaFEhn/FYJZrqFAdIL
+9S8wDmWsWIbt+mqiP4YWMMY60DlmSC8VgKwhyT3+FIacxP/NpL24PiDpDJer7aTD
+yqzBonVFiVRVPqLLHpd883CoNC8ncvSVcF4mR6M2duPXJLOK4bU+K8JzLbsYxUgE
+MMkmRBdi/n8PpSUvd870wXW4kfHfxQIDAQABo3AwbjAdBgNVHQ4EFgQUN5GZVXNQ
+E/3EvfJT56pr/GEzQI4wTQYDVR0RBEYwRIIcYXV0aGVudGljYXRpb24uc3RnLmlk
+LnViYy5jYYYkaHR0cHM6Ly9hdXRoZW50aWNhdGlvbi5zdGcuaWQudWJjLmNhMA0G
+CSqGSIb3DQEBCwUAA4IBAQA2e2WkSxnVFXvxAj0njn8H/vl+YhLdN/xdLZ/Np5t5
+/duEVUgHaW0bILsKxdw2+5VGgHBmVGButmodPhA5OHg6gCDNJ4gqjrqfNfon3/yS
+r0jvm1EZ44+IFTrrRt9aTppKnmEVkYs6fP46cygo3rSWuSHeNbZPZBEJ81l52snJ
+QIHGPdDtE387EsjDMAI2YjbCQfNkrmB6yedLURu/m34MzAgtCPYx9uWMcJ5DleaR
+XvSl3XmcDg63y+jqYhVCHuYV5eqIXj1OF3WPk438xUuh6HuHKIwQqHBz7udxbH3Z
+bb6jXGDJjiDHt1LRJ8xbVisFIcDlIwsGQQi0HeEJfx4P
+                        </ds:X509Certificate>
+                    </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor>
+        <KeyDescriptor use="encryption">
+            <ds:KeyInfo>
+                    <ds:X509Data>
+                        <ds:X509Certificate>
+MIIDTDCCAjSgAwIBAgIUelptJqDnS5mQ5KlE1U7kJJYVqOYwDQYJKoZIhvcNAQEL
+BQAwJzElMCMGA1UEAwwcYXV0aGVudGljYXRpb24uc3RnLmlkLnViYy5jYTAeFw0x
+NzAzMDExOTU0MzVaFw0zNzAzMDExOTU0MzVaMCcxJTAjBgNVBAMMHGF1dGhlbnRp
+Y2F0aW9uLnN0Zy5pZC51YmMuY2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQDA1b3xW7AlagzA67GOq2pDFfY4OY8+Z9Rp9fM43sdpHNSxLnOZf0cTOfpX
+xevAlmjtSY1y34/F59P6hULM5L28TOy1GJjfNoliGl4pFnVqjuRxtJYb3D2nu1dz
+URKhBkV3tqK0iFN/c3bXwYYdQOcavHdtqCOSAjub8oGrwjxS95tGda102aTotJ9K
+/4Q2sZbcXmrgvxgvnjCubsRqDX7jTBXPmfaNnnH1eBaVkjkk3OBCw590DykSmpqh
+qcOT4N+R2Dkt5GWxREP51wvMbks5cgipvx0q9ICNNecfVPTA/fCicZs91mndcy8T
+O7RWqkqW1V44rPhDddFxKlRv312bAgMBAAGjcDBuMB0GA1UdDgQWBBQMewgM36IE
+QYzyZ1cgx2o6iYpacDBNBgNVHREERjBEghxhdXRoZW50aWNhdGlvbi5zdGcuaWQu
+dWJjLmNhhiRodHRwczovL2F1dGhlbnRpY2F0aW9uLnN0Zy5pZC51YmMuY2EwDQYJ
+KoZIhvcNAQELBQADggEBAByoR/Yk1hIlo/VsXdQqR9ngYLPH47oA3rIASzA1d4ek
+juzsv7L7VHcm7rtYPMFecVwLkDGAsC8nHOPbf4L6rdvvkc+OT88dMooudgdAbvEo
+G8d4sSpJI8ZBUWJkFqMucX8EU6UT328REEo9Srb6Sxb3btsNZ2g5zi/f7zqexYO5
+RzcOSDI8CujAyY+yoTvZhWHxnDgOmUFZe2jLh0exj4NsFx5ygT1n2uRRg2H2oJ5N
+GjCr3rY8MYltz24oKf8dbJGu3eVZwehelxb2+vHaqhaks4loBgg2Wup2nnKz0bEw
+MP0BO0FDvjHQlrIMlHo4KwFXXXpUnrR1VVVHXe3a1Y8=
+                        </ds:X509Certificate>
+                    </ds:X509Data>
+            </ds:KeyInfo>
+
+        </KeyDescriptor>
+        
+        <AttributeService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding" Location="https://authentication.ubc.ca:8443/idp/profile/SAML1/SOAP/AttributeQuery"/>
+        <NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+        <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+
+    </AttributeAuthorityDescriptor>
+
+  <Organization>
+    <OrganizationName xml:lang="en">University of British Columbia</OrganizationName>
+    <OrganizationDisplayName xml:lang="en">University of British Columbia</OrganizationDisplayName>
+    <OrganizationURL xml:lang="en">http://www.ubc.ca/</OrganizationURL>
+  </Organization>
+  <ContactPerson contactType="technical">
+    <GivenName>Hari</GivenName>
+    <SurName>Mailvaganam</SurName>
+    <EmailAddress>hari.mailvaganam@ubc.ca</EmailAddress>
+  </ContactPerson>
 </EntityDescriptor>

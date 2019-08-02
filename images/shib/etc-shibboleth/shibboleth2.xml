@@ -41,7 +41,7 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO entityID="https://samltest.id/saml/idp">
+            <SSO entityID="https://authentication.stg.id.ubc.ca" discoveryProtocol="SAMLDS" discoveryURL="https://authentication.stg.id.ubc.ca/idp/shibboleth">
               SAML2 SAML1
             </SSO>
 
