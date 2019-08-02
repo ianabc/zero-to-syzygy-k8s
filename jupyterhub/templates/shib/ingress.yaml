@@ -16,7 +16,7 @@ spec:
         paths:
           - backend:
               serviceName: sp
-              servicePort: 80
+              servicePort: 443
             path: /
   tls:
     - hosts:
