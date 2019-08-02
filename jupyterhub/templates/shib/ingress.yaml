@@ -15,7 +15,7 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: httpd-proxy-public
+              serviceName: sp
               servicePort: 80
             path: /
   tls:
