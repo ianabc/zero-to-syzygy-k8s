@@ -276,7 +276,7 @@ prePuller:
 shib:
   image:
     name: pimsubc/k8s-shib
-    tag: '0.9-6dab9b0'
+    tag: '0.9-1f7d748'
 
 httpdProxy:
   image:
