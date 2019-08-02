@@ -20,7 +20,7 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://k8s1.syzygy.ca/shibboleth"
+    <ApplicationDefaults entityID="https://jupyter-shib.pims.math.ca/jupyter/shibboleth-sp"
                          REMOTE_USER="eppn uid persistent-id targeted-id">
 
         <!--
