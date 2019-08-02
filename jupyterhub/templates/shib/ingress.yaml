@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingress.kubernetes.io/secure-backends: "true"
     kubernetes.io/tls-acme: "true"
   creationTimestamp: null
