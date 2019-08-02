@@ -100,7 +100,7 @@
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
 
         <!-- Simple file-based resolver for using a single keypair. -->
-        <CredentialResolver type="File" key="/run/secrets/sp-cert-key/sp-key.pem" certificate="/run/secrets/sp-cert-key/sp-cert.pem"/>
+        <CredentialResolver type="File" key="/run/secrets/sp-cert-key/tls.key" certificate="/run/secrets/sp-cert-key/tls.crt"/>
 
         <!--
         The default settings can be overridden by creating ApplicationOverride elements (see

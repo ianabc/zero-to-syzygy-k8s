@@ -3,14 +3,19 @@ kind: Service
 metadata:
   name: sp
   labels:
-    app: sp
+    {{- $_ := merge (dict "componentSuffix" "") . }}
+    {{- include "jupyterhub.labels" $_ | nindent 4 }}
 spec:
+  selector:
+    component: shib
+    release: {{ .Release.Name }}
   ports:
     - name: http
       port: 80
       targetPort: 80
+      protocol: TCP
     - name: https
       port: 443
       targetPort: 443
-  selector:
-    app: sp
+      protocol: TCP
+  type: ClusterIP
