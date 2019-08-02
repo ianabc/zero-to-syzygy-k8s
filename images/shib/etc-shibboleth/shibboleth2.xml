@@ -20,8 +20,8 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://jupyter-shib.pims.math.ca/jupyter/shibboleth-sp"
-                         REMOTE_USER="eppn uid persistent-id targeted-id">
+    <ApplicationDefaults entityID="https://k8s1.syzygy.ca/jupyter/shibboleth-sp"
+                         REMOTE_USER="eduPersonPrincipalName">
 
         <!--
         Controls session lifetimes, address checks, cookie handling, and the protocol handlers.
@@ -65,7 +65,7 @@
         Allows overriding of error template information/filenames. You can
         also add attributes with values that can be plugged into the templates.
         -->
-        <Errors supportContact="admin@idptestbed"
+        <Errors supportContact="jupyter@pims.math.ca"
             helpLocation="/about.html"
             styleSheet="/shibboleth-sp/main.css"/>
         
