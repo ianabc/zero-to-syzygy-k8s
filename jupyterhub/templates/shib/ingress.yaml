@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/secure-backends: "true"
+    kubernetes.io/tls-acme: "true"
+  creationTimestamp: null
+  labels:
+    app: ingress-httpd-proxy
+  name:
+    ingress-httpd-proxy
+spec:
+  rules:
+    - host: k8s1.syzygy.ca
+      http:
+        paths:
+          - backend:
+              serviceName: httpd-proxy-public
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+      - k8s1.syzygy.ca
+      secretName: httpd-proxy.local-tls
+status:
+  loadBalancer: {}
