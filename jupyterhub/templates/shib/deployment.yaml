@@ -20,6 +20,9 @@ spec:
         - name: sp-cert-key
           secret:
             secretName: sp-cert-key
+        - name: shibboleth-sp-config
+          configMap:
+            name: shibboleth-sp-config
       containers:
         - image: {{ .Values.shib.image.name }}:{{ .Values.shib.image.tag }}
           imagePullPolicy: Always
@@ -28,3 +31,9 @@ spec:
             - name: sp-cert-key
               mountPath: "/run/secrets/sp-cert-key"
               readOnly: true
+            - name: shibboleth-sp-config
+              mountPath: "/etc/shibboleth/shibboleth2.xml
+              subPath: shibboleth2.xml
+            - name: shibboleth-sp-config
+              mountPath: "/etc/shibboleth/idp-metadata.xml
+              subPath: idp-metadata.xml
