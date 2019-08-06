@@ -20,4 +20,4 @@ jupyterhub-hmacauthenticator
 py-spy
 # Syzygy Authenticator
 jhub_remote_user_authenticator
-git+https://github.com/callysto/syzygyauthenticator@shib-ubc#syzygyauthenticator
+git+https://github.com/callysto/syzygyauthenticator@shib-k8s#syzygyauthenticator
