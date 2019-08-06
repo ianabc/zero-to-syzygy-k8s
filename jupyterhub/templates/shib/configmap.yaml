@@ -4,6 +4,6 @@ metadata:
   name: shibboleth-sp-config
 data:
   shibboleth2.xml: |-
-    {{- .Files.Get "files/shibboleth2.xml" | nindent 4 }}
+    {{- .Values.shib.shibboleth2xml | nindent 4 }}
   idp-metadata.xml: |-
-    {{- .Files.Get "files/idp-metadata.xml" | nindent 4 }}
+    {{- .Values.shib.idpmetadataxml | nindent 4 }}
