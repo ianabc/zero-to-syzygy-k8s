@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: shibboleth-sp-config
 data:
-  shibboleth2.xml: {{ .Values.shib.idp.shibboleth2-xml | b64enc }}
-  idp-metadata.xml: {{ .Values.shib.idp.idp-metadata-xml | b64enc }}
-
+  shibboleth2.xml: |-
+    {{- .Files.Get "files/shibboleth2.xml" | nindent 4 }}
+  idp-metadata.xml: |-
+    {{- .Files.Get "files/idp-metadata.xml" | nindent 4 }}

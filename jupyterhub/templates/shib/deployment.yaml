@@ -32,8 +32,8 @@ spec:
               mountPath: "/run/secrets/sp-cert-key"
               readOnly: true
             - name: shibboleth-sp-config
-              mountPath: "/etc/shibboleth/shibboleth2.xml
+              mountPath: "/etc/shibboleth/shibboleth2.xml"
               subPath: shibboleth2.xml
             - name: shibboleth-sp-config
-              mountPath: "/etc/shibboleth/idp-metadata.xml
+              mountPath: "/etc/shibboleth/idp-metadata.xml"
               subPath: idp-metadata.xml
