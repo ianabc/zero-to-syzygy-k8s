@@ -37,3 +37,6 @@ spec:
             - name: shibboleth-sp-config
               mountPath: "/etc/shibboleth/idp-metadata.xml"
               subPath: idp-metadata.xml
+            - name: shibboleth-sp-config
+              mountPath: "/etc/shibboleth/attribute-map.xml"
+              subPath: attribute-map.xml

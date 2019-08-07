@@ -45,7 +45,7 @@ hub:
   extraVolumeMounts: []
   image:
     name: pimsubc/k8s-hub
-    tag: '0.9-0549318'
+    tag: '0.9-7b0327a'
   resources:
     requests:
       cpu: 200m
@@ -276,7 +276,7 @@ prePuller:
 shib:
   image:
     name: pimsubc/k8s-shib
-    tag: '0.9-0549318'
+    tag: '0.9-7eeb792'
 
 httpdProxy:
   image:

@@ -1,5 +1,5 @@
-<SPConfig xmlns="urn:mace:shibboleth:2.0:native:sp:config"
-    xmlns:conf="urn:mace:shibboleth:2.0:native:sp:config"
+<SPConfig xmlns="urn:mace:shibboleth:3.0:native:sp:config"
+    xmlns:conf="urn:mace:shibboleth:3.0:native:sp:config"
     xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
     xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"    
     xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
@@ -21,7 +21,7 @@
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
     <ApplicationDefaults entityID="https://k8s1.syzygy.ca/jupyter/shibboleth-sp"
-        REMOTE_USER="eduPersonPrincipalName">
+                         REMOTE_USER="eppn eduPersonPrincipalName">
 
         <!--
         Controls session lifetimes, address checks, cookie handling, and the protocol handlers.
@@ -41,8 +41,7 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO entityID="https://authentication.stg.id.ubc.ca"
-                discoveryProtocol="SAMLDS" discoveryURL="https://authentication.stg.id.ubc.ca/idp/shibboleth">
+            <SSO entityID="https://authentication.stg.id.ubc.ca" discoveryProtocol="SAMLDS" discoveryURL="https://authentication.stg.id.ubc.ca/idp/shibboleth">
               SAML2 SAML1
             </SSO>
 
@@ -71,11 +70,25 @@
             styleSheet="/shibboleth-sp/main.css"/>
         
         <!-- Example of remotely supplied batch of signed metadata. -->
+        <!--
         <MetadataProvider type="XML" validate="true"
-                       uri="https://authentication.stg.id.ubc.ca/idp/shibboleth"
-                       backingFilePath="/etc/shibboleth/idp-metadata.xml"
-            reloadInterval="7200"> 
+         url="http://federation.org/federation-metadata.xml"
+              backingFilePath="federation-metadata.xml" reloadInterval="7200">
+            <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
+            <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
+            <DiscoveryFilter type="Blacklist" matcher="EntityAttributes" trimTags="true" 
+              attributeName="http://macedir.org/entity-category"
+              attributeNameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
+              attributeValue="http://refeds.org/category/hide-from-discovery" />
         </MetadataProvider>
+        -->
+
+        <!-- Example of locally maintained metadata. -->
+        <!--
+        <MetadataProvider type="XML" validate="true" path="partner-metadata.xml"/>
+        -->
+        
+        <MetadataProvider type="XML" validate="true" path="idp-metadata.xml"/>
 
         <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
@@ -88,6 +101,7 @@
 
         <!-- Simple file-based resolver for using a single keypair. -->
         <CredentialResolver type="File" key="/run/secrets/sp-cert-key/tls.key" certificate="/run/secrets/sp-cert-key/tls.crt"/>
+
         <!--
         The default settings can be overridden by creating ApplicationOverride elements (see
         the https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApplicationOverride topic).

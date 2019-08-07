@@ -7,3 +7,5 @@ data:
     {{- .Values.shib.shibboleth2xml | nindent 4 }}
   idp-metadata.xml: |-
     {{- .Values.shib.idpmetadataxml | nindent 4 }}
+  attribute-map.xml: |-
+    {{- .Values.shib.attributemapxml | nindent 4 }}
